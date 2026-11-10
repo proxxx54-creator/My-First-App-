@@ -113,11 +113,16 @@ class ViewController: UIViewController {
         
         private func setupNameTextField() {
             view.addSubview(nameTextField)
-            nameTextField.backgroundColor = .white
-            nameTextField.placeholder = "Название группы"
+            nameTextField.backgroundColor = .darkGray
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.white.withAlphaComponent(1.5) // Цвет и прозрачность (0.5 - полупрозрачный)
+            ]
+
+            nameTextField.attributedPlaceholder = NSAttributedString(string: "Название группы", attributes: attributes)
+            //nameTextField.placeholder = "Название группы"
             nameTextField.borderStyle = .roundedRect
-            nameTextField.font = .systemFont(ofSize: 18)
-            nameTextField.textColor = .black
+            nameTextField.font = .systemFont(ofSize: 19)
+            nameTextField.textColor = .systemPurple
             nameTextField.layer.cornerRadius = 16
         }
         
@@ -211,7 +216,7 @@ class ViewController: UIViewController {
         
         
         @objc private func buttonPressed() {
-            let band = nameTextField.text?.trimmingCharacters(in: .whitespaces) ?? "Неизвестная групп"
+            let band = nameTextField.text?.trimmingCharacters(in: .whitespaces) ?? "Неизвестная группа"
             let album = albumTextField.text?.trimmingCharacters(in: .whitespaces) ?? "Неизвестный альбом"
             
             let newEntry = "\(band) — \(album)"
