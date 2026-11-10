@@ -155,11 +155,18 @@ class ViewController: UIViewController {
         
         private func setupAlbumTextField() {
             view.addSubview(albumTextField)
-            albumTextField.backgroundColor = .white
-            albumTextField.placeholder = "Название альбома"
+            
+            albumTextField.backgroundColor = .darkGray
+            let atr : [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.white.withAlphaComponent(1.5) // Цвет и прозрачность (0.5 - полупрозрачный)
+            ]
+            
+            albumTextField.attributedPlaceholder = NSAttributedString(string: "Название альбома", attributes: atr)
+            //albumTextField.backgroundColor = .darkGray
+            //albumTextField.placeholder = "Название альбома"
             albumTextField.borderStyle = .roundedRect
-            albumTextField.font = .systemFont(ofSize: 18)
-            albumTextField.textColor = .black
+            albumTextField.font = .systemFont(ofSize: 19)
+            albumTextField.textColor = .systemPurple
             albumTextField.layer.cornerRadius = 16
         }
         
